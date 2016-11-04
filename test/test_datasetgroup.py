@@ -10,7 +10,7 @@ from warnings import warn
 #3rd party
 
 # this package
-from h5minibatch import DataSetGroup
+from h5batchreader import DataSetGroup
 
 ###########
 FNAME = '/reg/d/ana01/temp/davidsch/ImgMLearnSmall/amo86815_mlearn-r070-c0000.h5'

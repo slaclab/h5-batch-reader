@@ -9,7 +9,7 @@ import uuid
 import numpy as np
 import h5py
 
-from h5minibatch import Samples
+from h5batchreader import Samples
 
 def maskOne(N,exclude):
     mask = np.ones(N,np.int8)

@@ -8,7 +8,7 @@ import uuid
 import unittest
 import numpy as np
 import h5py
-import h5minibatch
+import h5batchreader
 
 class TestBatchIter( unittest.TestCase):
     def setUp(self):
@@ -57,9 +57,9 @@ class TestBatchIter( unittest.TestCase):
                 imgDiff=np.sum(np.abs(bImg.astype(np.float) - fImg.astype(np.float)))
                 self.assertAlmostEqual(imgDiff, 0.0, places=2)
 
-        h5mini = h5minibatch.H5MiniBatchReader(h5files=self.h5files,
-                                               include_if_one_mask_datasets=['msk'],
-                                               verbose=True)
+        h5mini = h5batchreader.H5BatchReader(h5files=self.h5files,
+                                             include_if_one_mask_datasets=['msk'],
+                                             verbose=True)
         h5mini.prepareClassification(label_dataset = 'label',
                                      datasets_for_feature_vector = ['bldA','bldB'],
                                      feature_image_datasets = ['img'],

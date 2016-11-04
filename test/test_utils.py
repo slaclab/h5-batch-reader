@@ -9,7 +9,7 @@ import uuid
 import numpy as np
 import h5py
 
-from h5minibatch import utils
+from h5batchreader import utils
 
 class TestMakeMask( unittest.TestCase ) :
     def setUp(self):

@@ -12,11 +12,11 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='h5-mlearn-minibatch',
-    version='0.0.3',
+    name='h5-batch-reader',
+    version='0.0.4',
     description='package to prepare minibatches from h5 input for a machine learning framework.',
     long_description=long_description,
-    url='https://github.com/davidslac/h5-mlearn-minibatch',
+    url='https://github.com/slaclab/h5-batch-reader',
 #    ext_modules= cythonize(path.join(here,'pyext','main.pyx')),
     author='David Schneider',
     author_email='davidsch@slac.stanford.edu',

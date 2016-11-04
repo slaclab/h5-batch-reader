@@ -10,7 +10,7 @@ import numpy as np
 import h5py
 import tempfile
 
-from h5minibatch import H5BatchReader, DataSetGroup
+from h5batchreader import H5BatchReader, DataSetGroup
 
 class TestReadEpochs( unittest.TestCase ) :
 
