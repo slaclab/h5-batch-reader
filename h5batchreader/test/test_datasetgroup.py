@@ -26,7 +26,7 @@ def test_datasetGroup():
         dgroup.validate(FNAME)
     else:
         warn("not testing validate, file %s doesn't exist" % FNAME)
-        
+
 if __name__ == '__main__':
     test_datasetGroup()
     
