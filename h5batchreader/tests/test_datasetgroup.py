@@ -15,6 +15,7 @@ from h5batchreader import DataSetGroup
 ###########
 FNAME = '/reg/d/ana01/temp/davidsch/ImgMLearnSmall/amo86815_mlearn-r070-c0000.h5'
 
+# nose tests picks this up
 def test_datasetGroup():
     fvecnames=['bld.ebeam.ebeamCharge',
                'bld.ebeam.ebeamDumpCharge',
