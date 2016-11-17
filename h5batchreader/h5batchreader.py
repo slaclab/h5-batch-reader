@@ -23,8 +23,6 @@ class H5BatchReader(object):
     datasets corresponds to the same sample for a batch.
     some datasets can be merged into a feature vector.
     other datasets can be used to mask out rows (bad samples).
-
-    balance - you can balance the samples based on a dataset.
     '''
     def __init__(self, 
                  h5files,

@@ -7,6 +7,12 @@ import numpy as np
 import h5py
 
 class DataSetGroup(object):
+    '''Used to work with a group of datasets
+    Example:
+    dgroup = DataSetGroup(name='bld', dsets=['A','B','C'], dtype=np.float32)
+    len(dgroup) # == 3
+    dgroup.read_sample(h5, 20) # returns a numpy array of float32 with 3 elements - A,B,C from row 20 of each dataset under h5
+    '''
     def __init__(self, name, dsets, dtype=np.float32):
         assert isinstance(name, str)
         assert isinstance(dsets,list)

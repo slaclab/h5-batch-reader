@@ -5,29 +5,44 @@ from __future__ import print_function
 ########## imports ##########
 # python system
 import os
-from warnings import warn
+import sys
+import uuid
+import unittest
 
 #3rd party
+import numpy as np
+import h5py
 
 # this package
 from h5batchreader import DataSetGroup
 
-###########
-FNAME = '/reg/d/ana01/temp/davidsch/ImgMLearnSmall/amo86815_mlearn-r070-c0000.h5'
+class TestDatasetGroup(unittest.TestCase):
+    def setUp(self):
+        self.FNAME = 'test_datasetGroup_' + str(uuid.uuid4()) + '.h5'
+        h5=h5py.File(self.FNAME,'w')
+        h5['A'] = np.zeros(10)
+        h5['B'] = np.ones(10, dtype=np.int)
+        h5['C'] = 2*np.ones(10)
+        h5['D'] = -1*np.ones(10)
+        h5.close()
 
-# nose tests picks this up
-def test_datasetGroup():
-    fvecnames=['bld.ebeam.ebeamCharge',
-               'bld.ebeam.ebeamDumpCharge',
-               'bld.ebeam.ebeamEnergyBC1']
-    dgroup = DataSetGroup(name='bld', dsets=fvecnames)
-    print(dgroup)
-    print("%r" % dgroup)
-    if os.path.exists(FNAME):
-        dgroup.validate(FNAME)
-    else:
-        warn("not testing validate, file %s doesn't exist" % FNAME)
+    def tearDown(self):
+        os.unlink(self.FNAME)
+        
+    def test_datasetGroup(self):
+        fvecnames=['A','B','C']
+        dgroup = DataSetGroup(name='bld', dsets=fvecnames)
+        print(dgroup)
+        print("%r" % dgroup)
+        dgroup.validate(self.FNAME)
+        print("number of datasets in group: %d" % len(dgroup))
+        h5 = h5py.File(self.FNAME,'r')
+        sample = dgroup.read_sample(h5,2)
+        self.assertEqual(sample[0],0)
+        self.assertEqual(sample[1],1)
+        self.assertEqual(sample[2],2)
+        
 
 if __name__ == '__main__':
-    test_datasetGroup()
+    unittest.main(argv=[sys.argv[0],'-v'])
     
