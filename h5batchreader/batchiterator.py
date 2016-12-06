@@ -70,7 +70,8 @@ class BatchIterator(object):
         startIdx = self.nextSampleIdx
         endIdx = startIdx + self.batchsize
         assert endIdx <= self.samples.totalSamples
-        
+        assert isinstance(startIdx, int), "startIdx is %r" % startIdx
+        assert isinstance(endIdx, int), "endIdx is %r" % endIdx
         fileRow = self.samples.allSamples[startIdx:endIdx]
 
         batchDict = {'epoch':self.curEpoch,
