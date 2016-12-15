@@ -75,6 +75,17 @@ class TestReadEpochs( unittest.TestCase ) :
         numAll = len(np.unique(allSamples))
 
         self.assertEqual(numAll, numTrainSamples+numValidationSamples+numTestSamples)
+
+    def test_form_dset_group_wrong(self):
+        ok=False
+        try:
+            batchReader = H5BatchReader(h5files=self.h5filenames,
+                                        dsets=['A','C'],
+                                        dset_groups=['D','F'],
+                                        verbose=True)
+        except AssertionError:
+            ok=True
+        self.assertTrue(ok, "did not get assertion error when construction h5batch reader wrong")
         
     def test_readThreeEpochs(self):
         batchReader = H5BatchReader(h5files=self.h5filenames,

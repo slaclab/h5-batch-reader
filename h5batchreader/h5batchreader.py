@@ -38,6 +38,8 @@ class H5BatchReader(object):
         assert len(h5files)>0
         assert isinstance(dsets, list)
         assert isinstance(dset_groups, list)
+        for dset_group in dset_groups:
+            assert isinstance(dset_group, DataSetGroup), "to use dset_groups, you must pas a list of DataSetGroup instances. For example, dset_groups=[h5batchreader.DataSetGroup(name='vec',dsets=['A','B'])]"
         assert len(dsets)+len(dset_groups)>0
         
         h5files = copy.deepcopy(h5files)
